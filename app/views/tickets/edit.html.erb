@@ -1,0 +1,25 @@
+<h1>Редактировать билет</h1>
+
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number, id: :ticket_number %>
+
+  <div class="actions">
+    <%= f.submit 'Изменить' %>
+  </div>
+<% end %>
+
+<%= link_to 'Назад', tickets_path %>
