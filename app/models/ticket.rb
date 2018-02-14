@@ -1,8 +1,8 @@
 class Ticket < ActiveRecord::Base
-   validates :number, presence: true
+   #validates :number, presence: true
 
    belongs_to :user
    belongs_to :base_station, class_name: 'RailwayStation', foreign_key: :base_station_id
    belongs_to :end_station, class_name: 'RailwayStation', foreign_key: :end_station_id
-   belonds_to :train
+   belongs_to :train
 end

@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20180201195341) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "route_id"
-    t.integer "railway_station_id"
-    t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
+    t.integer "current_station_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
 
