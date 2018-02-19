@@ -3,8 +3,8 @@ class CreatWagons < ActiveRecord::Migration[5.1]
     create_table :wagons do |t|
       t.integer :number
       t.string :wagon_type
-      t.integer :low_place
-      t.integer :top_place
+      t.integer :low_place, default: 0
+      t.integer :top_place, default: 0
 
       t.timestamps
     end

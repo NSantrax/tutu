@@ -13,47 +13,26 @@
 
  </p>
   <strong>Вагонов в поезде </strong>
-   <% wagons_coupe = 0 %>
-   <% wagons_plackart = 0 %>
-   <% coupe_low_place = 0 %>
-   <% coupe_top_place = 0 %>
-   <% plackart_low_place = 0 %>
-   <% plackart_top_place = 0 %>
-  <% if @train.wagons.empty? %>
-     Вагоны не прицеплены
-  <% else %>
-    <% @train.wagons.each do |wagon|  %>
-       <% if wagon.wagon_type == 'coupe' %>
-          <% wagons_coupe +=1 %>         
-          <% coupe_low_place += wagon.low_place %>
-          <% coupe_top_place += wagon.top_place %>
-       <% else %>
-          <% wagons_plackart +=1 %>         
-          <% plackart_low_place += wagon.low_place %>
-          <% plackart_top_place += wagon.top_place %>
-       <% end %>
-     <% end %>
-   <%= wagons_plackart + wagons_coupe %>
+  <%=  @train.wagons.count %>
   </p>
    Купе:
-   <%=  wagons_coupe %>
+   <%=  @wagons_coupe %>
    Плацкартных:
-   <%= wagons_plackart %>
+   <%= @wagons_plackart %>
   </p>
    Мест в купе: 
-   <%= coupe_low_place + coupe_top_place %>
+   <%= @coupe_low_place + @coupe_top_place %>
    Верхних:
-   <%= coupe_top_place%>
+   <%= @coupe_top_place%>
    Нижних:
-   <%= coupe_low_place %>
+   <%= @coupe_low_place %>
    </p>
    Мест в плацкарте: 
-   <%= plackart_low_place + plackart_top_place %>
+   <%= @plackart_low_place + @plackart_top_place %>
    Верхних:
-   <%= plackart_top_place%>
+   <%= @plackart_top_place%>
    Нижних:
-   <%= plackart_low_place %>
-<% end %>
+   <%= @plackart_low_place %>
 
 </p>
   <strong>На маршруте</strong>
