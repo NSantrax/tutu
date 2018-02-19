@@ -1,9 +1,8 @@
 class Wagon < ApplicationRecord
-	validates :number, presence: true
-        validates :wagon_type, presence: true
-        validates :low_place, presence: true
-        validates :top_place, presence: true
 
+        
+	validates :number, :wagon_type, :low_place, :top_place, presence: true
+        validates :number, :low_place, :top_place, numericality: { only_integer:true }
 
-        belongs_to  :train
+        belongs_to  :train, optional: true 
 end

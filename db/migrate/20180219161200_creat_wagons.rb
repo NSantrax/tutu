@@ -1,4 +1,4 @@
-class CreateWagons < ActiveRecord::Migration[5.1]
+class CreatWagons < ActiveRecord::Migration[5.1]
   def change
     create_table :wagons do |t|
       t.integer :number
