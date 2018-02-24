@@ -6,33 +6,37 @@
 </p>
   <strong>На станции</strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
+    <%= @train.current_station.title %> 
   <% else %>
    Не указано
   <% end %>
 
  </p>
   <strong>Вагонов в поезде </strong>
+ <% if @train.wagons.any? %>
   <%=  @train.wagons.count %>
   </p>
    Купе:
-   <%=  @wagons_coupe %>
+   <%=  @train.wagons.coupe.count %>
    Плацкартных:
-   <%= @wagons_plackart %>
+   <%= @train.wagons.plackart.count %>
   </p>
    Мест в купе: 
-   <%= @coupe_low_place + @coupe_top_place %>
+   <%= @train.wagons.coupe_low_place + @train.wagons.coupe_top_place %>
    Верхних:
-   <%= @coupe_top_place%>
+   <%= @train.wagons.coupe_top_place  %>
    Нижних:
-   <%= @coupe_low_place %>
+   <%= @train.wagons.coupe_low_place %>
    </p>
    Мест в плацкарте: 
-   <%= @plackart_low_place + @plackart_top_place %>
+   <%= @train.wagons.plackart_low_place + @train.wagons.plackart_top_place %>
    Верхних:
-   <%= @plackart_top_place%>
+   <%= @train.wagons.plackart_top_place%>
    Нижних:
-   <%= @plackart_low_place %>
+   <%= @train.wagons.plackart_low_place %>
+   <% else %>
+   В поезде нет вагонов
+   <% end %>
 
 </p>
   <strong>На маршруте</strong>
