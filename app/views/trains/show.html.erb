@@ -6,10 +6,37 @@
 </p>
   <strong>На станции</strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
+    <%= @train.current_station.title %> 
   <% else %>
    Не указано
   <% end %>
+
+ </p>
+  <strong>Вагонов в поезде </strong>
+ <% if @train.wagons.any? %>
+  <%=  @train.wagons.count %>
+  </p>
+   Купе:
+   <%=  @train.wagons.coupe.count %>
+   Плацкартных:
+   <%= @train.wagons.plackart.count %>
+  </p>
+   Мест в купе: 
+   <%= @train.wagons.coupe_low_place + @train.wagons.coupe_top_place %>
+   Верхних:
+   <%= @train.wagons.coupe_top_place  %>
+   Нижних:
+   <%= @train.wagons.coupe_low_place %>
+   </p>
+   Мест в плацкарте: 
+   <%= @train.wagons.plackart_low_place + @train.wagons.plackart_top_place %>
+   Верхних:
+   <%= @train.wagons.plackart_top_place%>
+   Нижних:
+   <%= @train.wagons.plackart_low_place %>
+   <% else %>
+   В поезде нет вагонов
+   <% end %>
 
 </p>
   <strong>На маршруте</strong>
@@ -18,7 +45,7 @@
   <% else %>
    Маршрут не назначен
   <% end %>
-
+ 
 </p>
 <%= link_to 'Редактировать', edit_train_path(@train) %>
 <%= link_to 'Назад', trains_path %>
