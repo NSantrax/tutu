@@ -15,5 +15,21 @@
   <% end %>
 
 </p>
+  <strong>Станции маршрута: </strong>
+</p>
+
+</ul>
+  <% if @route.railway_stations.present? %>
+    <% @route.railway_stations.each do |station| %>
+     <li> <%= station.title %></li>
+    <% end %>
+</ul>
+  <% else %>
+   Станции отсутствуют
+  <% end %>
+</p>
+
+
+</p>
 <%= link_to 'Редактировать', edit_route_path(@route) %> |
 <%= link_to 'Назад', routes_path %>
