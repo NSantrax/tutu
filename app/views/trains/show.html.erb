@@ -16,27 +16,21 @@
  <% if @train.wagons.any? %>
   <%=  @train.wagons.count %>
   </p>
-   Купе:
-   <%=  @train.wagons.coupe.count %>
-   Плацкартных:
-   <%= @train.wagons.plackart.count %>
-  </p>
-   Мест в купе: 
-   <%= @train.wagons.coupe_low_place + @train.wagons.coupe_top_place %>
-   Верхних:
-   <%= @train.wagons.coupe_top_place  %>
-   Нижних:
-   <%= @train.wagons.coupe_low_place %>
-   </p>
-   Мест в плацкарте: 
-   <%= @train.wagons.plackart_low_place + @train.wagons.plackart_top_place %>
-   Верхних:
-   <%= @train.wagons.plackart_top_place%>
-   Нижних:
-   <%= @train.wagons.plackart_low_place %>
+
+  <% Wagon::TYPE_WAGON.each do |type| %>
+    <%= type = type.downcase.sub('wagon', '').to_sym %>  
+    <%=  @train.wagons.send(type).count %>
+     </p>
+    <% Wagon::PLACE.each do |place| %>
+      <%= place %>
+      <%= @train.wagons.send(type).sum(place) %>
+      </p>
+    <% end %>
+  <% end %>
+
    <% else %>
    В поезде нет вагонов
-   <% end %>
+  <% end %>
 
 </p>
   <strong>На маршруте</strong>

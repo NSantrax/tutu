@@ -1,5 +1,5 @@
-  <%= form_with(model: wagon, local: true) do |form| %>
-  <%= render 'common/errors', resourse: @wagon %>
+  <%= form_with(model: wagon.becomes(Wagon), local: true) do |form| %>
+  <%= render 'common/errors', resourse: wagon %>
    
 
   <div class="field">
@@ -7,25 +7,22 @@
     <%= form.text_field  :number, id: :wagon_number %>
   </div>
 
+  <% Wagon::PLACE.each do |place| %>  
   <div class="field">
-    <%= form.label :low_place %>
-    <%= form.text_field  :low_place, id: :wagon_low_place %>
+    <%= form.label place %>
+    <% place_n = 'wagon_' + place.to_s %>
+    <%= form.text_field  place, id: place_n.to_sym %>
+  <% end %>    
   </div>
-
-   <div class="field">
-    <%= form.label :top_place %>
-    <%= form.text_field  :top_place, id: :wagon_top_place %>
-  </div>
- 
 
 
   <div class="field">
-   <%= form.label :wagon_type %>
-   <%= form.radio_button(:wagon_type, "coupe", checked: true) %>
-   <%= label_tag(:wagon_type_coupe, "coupe") %>
-   <%= form.radio_button(:wagon_type, "plackart") %>
-   <%= label_tag(:wagon_type_plackart, "plackart") %>
-    
+  <%= form.label :type %>
+  <% Wagon::TYPE_WAGON.each do |type| %>   
+   <%= form.radio_button(:type, type, checked: true) %>
+   <% type_n = type.downcase.sub('Wagon', '').to_sym %>
+   <%= label_tag(type_n, type) %>
+  <% end %>
   </div>
 
    <div class="field">

@@ -1,17 +1,25 @@
-class Wagon < ApplicationRecord
-
+class Wagon < ActiveRecord::Base
+   
         
-	validates :number, :wagon_type, :low_place, :top_place, presence: true
-        validates :number, :low_place, :top_place, numericality: { only_integer:true }
+	validates :number, presence: true
+        validates :number, uniqueness:{ scope: :train_id }
+        validates :low_place, :side_low_place,:side_top_place,:sit_place, :top_place, presence: true
+        belongs_to  :train, optional: true
 
-        belongs_to  :train, optional: true 
+        TYPE_WAGON = %w[CoupeWagon PlackartWagon SvWagon SitWagon]
+        PLACE = [:low_place, :top_place, :side_low_place, :side_top_place, :sit_place]
 
-        scope :coupe, -> { where(wagon_type: "coupe")}
-        scope :plackart, -> { where(wagon_type: "plackart")}
-
-        scope :plackart_top_place, -> { plackart.inject(0){ |result, wagon| result + wagon.top_place} }
-        scope :plackart_low_place, -> { plackart.inject(0){ |result, wagon| result + wagon.low_place} }
-        scope :coupe_low_place, -> { coupe.inject(0){ |result, wagon| result + wagon.low_place} }
-        scope :coupe_top_place, -> { coupe.inject(0){ |result, wagon| result + wagon.top_place} }
+   TYPE_WAGON.each do |type|
+     name = type.downcase.sub('wagon', '')
+     scope name.to_sym, -> { where(type: type)}
+   end   
+     
+   def place_total
+     place_total = 0
+     PLACE.each do |place|
+       place_total += self.send(place) if self.send(place)    
+     end
+     place_total
+   end
         
 end 

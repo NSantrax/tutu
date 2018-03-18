@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :users
   resources :tickets
   resources :wagons
+  resources :sv_wagons,   controller: "wagons", type: "SvWagons"
+  resources :coupe_wagons,   controller: "wagons", type: "CoupeWagons"
+  resources :plackart_wagons,   controller: "wagons", type: "PlackartWagons"
+  resources :sit_wagons,   controller: "wagons", type: "SitWagons"
 
   root 'welcome#index'
 

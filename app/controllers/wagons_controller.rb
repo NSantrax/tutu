@@ -1,4 +1,5 @@
 class WagonsController < ApplicationController
+  
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,7 +17,7 @@ class WagonsController < ApplicationController
     @wagon = Wagon.new(wagon_params)
 
     if @wagon.save
-   	  redirect_to @wagon
+   	  redirect_to @wagon 
     else
     	render :new
     end
@@ -45,7 +46,6 @@ class WagonsController < ApplicationController
   end
 
   def wagon_params
-  	params.require(:wagon).permit(:number, :wagon_type, :low_place, :top_place, :train_id )
+  	params.require(:wagon).permit(:number, :type, :low_place, :top_place, :side_low_place, :side_top_place, :sit_place, :train_id )
   end
-
 end
