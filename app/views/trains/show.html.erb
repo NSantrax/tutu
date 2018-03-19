@@ -13,10 +13,14 @@
 
  </p>
   <strong>Вагонов в поезде: </strong>
- <% if @train.wagons.any? %>
+  <% if @train.wagons.any? %>
   <%=  @train.wagons.count %>
   </p>
 
+   <% @train.wagons.each do |wagon| %>
+     <%= link_to wagon.number_on_train, wagon_path(wagon) %> |
+   <% end %>
+ </p>
   <% Wagon::TYPE_WAGON.each do |type| %>
     <%= type = type.downcase.sub('wagon', '').to_sym %>  
     <%=  @train.wagons.send(type).count %>

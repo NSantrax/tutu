@@ -6,6 +6,18 @@
   <%= @wagon.number %>
 </p>
 
+ <strong>Вагон прицеплен к поезду: </strong>
+  <% if @wagon.train.present? %>
+       <%= @wagon.train.number %>
+  <% else %>
+   Вагон отцеплен
+  <% end %>
+</p>
+
+<strong>Номер вагона в поезде:</strong>
+  <%= @wagon.number_on_train %>
+</p>
+
    <strong>Тип вагона:</strong>
     <%= @wagon.type %>
 </p>
@@ -31,13 +43,6 @@
  <strong>Сидячих мест:</strong>
       <%= @wagon.sit_place %>
  </p>
-  <strong>Вагон прицеплен к поезду: </strong>
-  <% if @wagon.train.present? %>
-       <%= @wagon.train.number %>
-  <% else %>
-   Вагон отцеплен
-  <% end %>
-</p>
-
+ 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
 <%= link_to 'Назад', wagons_path %>
