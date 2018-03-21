@@ -7,6 +7,16 @@
     <%= form.text_field  :number, id: :wagon_number %>
   </div>
 
+<div class="field">
+  <%= form.label :type %>
+  <% Wagon::TYPE_WAGON.each do |type| %>   
+   <%= form.radio_button(:type, type) %>
+   <% type_n = 'type_' + type.downcase.sub('Wagon', '').to_s + '_wagon' %>
+   <%= label_tag(type_n.to_sym, type) %>
+  <% end %>
+  </div>
+
+
   <% Wagon::PLACE.each do |place| %>  
   <div class="field">
     <%= form.label place %>
@@ -15,15 +25,6 @@
   <% end %>    
   </div>
 
-
-  <div class="field">
-  <%= form.label :type %>
-  <% Wagon::TYPE_WAGON.each do |type| %>   
-   <%= form.radio_button(:type, type, checked: true) %>
-   <% type_n = type.downcase.sub('Wagon', '').to_sym %>
-   <%= label_tag(type_n, type) %>
-  <% end %>
-  </div>
 
    <div class="field">
     <%= form.label :train, 'Выбрать поезд' %>

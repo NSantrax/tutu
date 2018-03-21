@@ -7,8 +7,6 @@ class Train < ActiveRecord::Base
 	belongs_to :current_station, optional: true, class_name: 'RailwayStation', foreign_key: :current_station_id
         has_many :tickets
         has_many  :wagons 
-  
-   
-   
+ 
   
 end

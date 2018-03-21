@@ -17,7 +17,13 @@
   <%=  @train.wagons.count %>
   </p>
 
-   <% @train.wagons.each do |wagon| %>
+</p>
+ Нумерация вагонов 
+  <%= @train.sort_wagons ? "С головы поезда" : "С хвоста поезда" %>
+
+</p>
+
+   <% @train.wagons.ordered(@train).each do |wagon| %>
      <%= link_to wagon.number_on_train, wagon_path(wagon) %> |
    <% end %>
  </p>
