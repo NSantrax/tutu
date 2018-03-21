@@ -8,5 +8,9 @@ class Train < ActiveRecord::Base
         has_many :tickets
         has_many  :wagons 
  
+    def place_count (type, place)
+     place_count = self.wagons.where(type: type).sum(place) 
+    end
+
   
 end
