@@ -9,6 +9,7 @@
     <div class="field">
     <%= form.label :railway_station_ids, 'Выбрать станции' %>
     <%= form.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, {multiple: true} %>
+ 
   </div>
 
   <div class="actions">

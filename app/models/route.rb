@@ -7,15 +7,11 @@ class Route < ActiveRecord::Base
    has_many :railway_stations, through: :railway_stations_routes
    before_validation :set_name
    
-  def update_station_number(station, number)
-      railway_stations_routes.find_by(railway_station_id: station.id.to_s).update(station_number: number)
-  end
-
-
+ 
    private
 
     def set_name
-      self.name = "#{railway_stations.first.title} - #{railway_stations.last.title}"
+      self.name = "#{self.railway_stations.first.title} - #{self.railway_stations.last.title}"
     end
 
      def stations_count
