@@ -6,6 +6,14 @@
     <%= form.number_field :number, id: :train_number %>
   </div>
 
+   <div class="field">
+     <%= form.label :sort_wagons %>
+     <%= form.radio_button(:sort_wagons, true) %>
+     <%= label_tag(:sort_wagons, "С головы поезда") %>
+     <%= form.radio_button(:sort_wagons, false ) %>
+     <%= label_tag(:sort_wagons, "С хвоста поезда") %>
+   </div>
+
   <div class="field">
     <%= form.label :current_station, 'Текущая станция' %>
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title, include_blank: true %>

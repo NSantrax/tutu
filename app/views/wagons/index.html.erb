@@ -11,12 +11,13 @@
   </thead>
 
   <tbody>
-    <%= render @wagons %>
+    <% @wagons.each do |w| %>
+      <%= render 'wagon', wagon: w %>
+    <% end  %>
+   
       
   </tbody>
 </table>
 
 <br>
-
 <%= link_to 'Добавить вагон', new_wagon_path %>
-

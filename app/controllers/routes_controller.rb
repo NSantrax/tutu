@@ -14,7 +14,6 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-
     if @route.save
    	  redirect_to @route
     else
@@ -45,7 +44,7 @@ class RoutesController < ApplicationController
   end
 
   def route_params
-  	params.require(:route).permit(:name, :train_id, :railway_station_id)
+  	params.require(:route).permit(:name, :train_id, railway_station_ids: [])
   end
 
 end
