@@ -10,5 +10,7 @@ class CreatWagons < ActiveRecord::Migration[5.1]
       t.integer :sit_place, default: 0
 
       t.timestamps
+    end
   end
+end
 

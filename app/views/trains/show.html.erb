@@ -11,7 +11,7 @@
    Не указано
   <% end %>
 
- </p>
+ <p>
   <strong>Вагонов в поезде: </strong>
   <% if @train.wagons.any? %>
     <%=  @train.wagons.count %>
@@ -20,16 +20,20 @@
   <% end %>
   </p>
 
-</p>
+<p>
  Нумерация вагонов 
   <%= @train.sort_wagons ? "С головы поезда" : "С хвоста поезда" %>
 </p>
-    
+  
    <% @train.wagons.ordered(@train).each do |wagon| %>
-     <%= link_to wagon.number_on_train, wagon_path(wagon) %> |
+     <%= link_to "Вагон № #{wagon.number}", wagon %> |
    <% end %>
  </p>
+ <p>
+   <%= link_to 'Добавить вагон', new_train_wagon_path(@train) %>
+ </p>
 
+<p>
 <% Wagon::TYPE_WAGON.each do |type| %>
      <%= @train.wagons.where(type: type).count %>
      <%= type %>
@@ -40,12 +44,11 @@
     <%= @train.place_count(type, place) %>
 ;
    <% end %>
-</p>
+
 <% end %>
 </p>
 
-
-</p>
+<p>
   <strong>На маршруте</strong>
   <% if @train.route.present? %>
     <%= @train.route.name %>
