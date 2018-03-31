@@ -1,0 +1,18 @@
+<h1>Поиск билета</h1>
+
+<p>
+  <%= form_tag search_path, method: :post do %>
+  <div f.field >
+    
+    <%= label_tag :base_station, 'Выбрать станцию отправления' %>
+    <%= select_tag :base_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %>  
+    <%= label_tag :end_station, 'Выбрать станцию назначения' %>
+    <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
+ </div>
+
+  <div f.actions >  
+    <%= submit_tag "Найти" %>  
+ </div>
+  <% end %>
+  
+  <%= @route.nil? || @route.empty? ? "Маршрут не найден":"#{@route}" %>

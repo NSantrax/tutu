@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :coupe_wagons,   controller: "wagons", type: "CoupeWagons"
   resources :plackart_wagons,   controller: "wagons", type: "PlackartWagons"
   resources :sit_wagons,   controller: "wagons", type: "SitWagons"
+  resource :search, only: [:create, :show]
 
   root 'welcome#index'
 

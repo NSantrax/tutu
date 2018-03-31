@@ -34,7 +34,10 @@ def departure_time_in(route)
   station_route(route).try(:departure_time).try(:strftime, "%H:%M")
 end
 
-
+def self.select_routes(base_station, end_station)
+  return if base_station == end_station
+  base_station.routes & end_station.routes 
+end
 
 protected
 
