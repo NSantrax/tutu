@@ -17,7 +17,7 @@ class SearchesController < ApplicationController
   private  
 
   def set_stations
-    @base_station = RailwayStation.find(params[:base_station_id])
+   @base_station = RailwayStation.find(params[:base_station_id])
    @end_station = RailwayStation.find(params[:end_station_id])
   end
 

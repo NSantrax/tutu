@@ -16,62 +16,48 @@
   <% end %>
   
 <p>
-  <% if @route.nil? || @route.empty? %>
-      Маршрут не найден
-</p>
-      <% else %>
-     Поезда на маршруте:
-          <% @trains = [] %>
-          <% if @route.class == Route %>
-            <% @trains << @route.trains %>
-            <% else %>
-              <% @route.each do |route| %>
-                 <% @trains << route.trains %>
-              <% end %>
-              <% @trains.flatten! %>
-          <% end %>
-       <% if @trains.empty? %>
-          На маршруте нет поездов
-<p>
-          <% else %>
-          
-          <%= @base_station.title %>
-          -
-          <%= @end_station.title %>
-<table>
-      <thead>
-       <tr>
-        <td>Номер поезда</td>
-        <td>Время отправления</td>
-        <td>Время прибытия</td>
-        <td>  </td>
-       
-       </tr>
-      </thead>
-    <tbody>
-     <% @trains.each do |train| %>
+ Результат поиска:
+  <% if @route.present? %>
+   <table>
+     <thead>
       <tr>
+        
+        <td>Время отправления от станции
+ <p>
+        <%= @base_station.title %>
+        </td>
+        <td>Время прибытия на станцию
+<p>
+        <%= @end_station.title %>
+        </td>
+        <td>Номер поезда</td>
+        <td>  </td>     
+      </tr>
+    </thead> 
+    <tbody>
+       <% @route.each do |route| %>
+         <% if  @base_station.station_number_in(route) < @end_station.station_number_in(route) && route.trains.present? %>   
+          <% route.trains.each do |train| %>
+      <tr>
+       
+       <td><%= @base_station.departure_time_in(route) %></td>
+       <td><%= @end_station.arrival_time_in(route) %></td> 
        <td><%= train.number %></td>
-       <td><%= @base_station.departure_time_in(train.route) %></td>
-       <td><%= @end_station.arrival_time_in(train.route) %></td> 
-   
-   <td>
-   <%= form_tag new_ticket_path, method: :get do %>
- 
- 
-   <%= hidden_field_tag :train_id, train.id %>
-   <%= hidden_field_tag :base_station, @base_station %>
-   <%= hidden_field_tag :end_station, @end_station %>
-   <%= hidden_field_tag :ticket_user_id, @user %>
-  
-   <%= link_to 'Купить билет', new_ticket_path %>
-   
- <% end %>
-   </td>  
-  </tr>
- <% end %>
-     
- </tbody>
-</table>
-  <% end %>
+       <td>
+       <%= form_tag new_ticket_path, method: :get do %>
+         <%= hidden_field_tag :train_id, train.id %>
+         <%= hidden_field_tag :base_station_id, @base_station.id %>
+         <%= hidden_field_tag :end_station_id, @end_station.id %>
+         <%= hidden_field_tag :user_id, @user.id %>
+         <%= link_to 'Купить билет', new_ticket_path %>
+       <% end %>
+       </td>      
+     </tr>
+     <% end %> 
+    <% end %>
+  <% end %> 
+     </tbody>
+   </table>
+    <% else %>
+   Маршрут отсутствует
 <% end %>
