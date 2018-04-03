@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
 
   def create
    
-   @route = RailwayStation.select_routes(@base_station, @end_station) 
+   @routes = RailwayStation.select_routes(@base_station, @end_station) 
    
    render :show
  
@@ -22,7 +22,7 @@ class SearchesController < ApplicationController
   end
 
   def set_user
-    @user = User.last
+    @user = User.first
   end
 
 end

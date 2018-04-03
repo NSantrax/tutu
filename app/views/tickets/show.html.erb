@@ -1,8 +1,30 @@
 <p id="notice"><%= notice %></p>
-
+<h1> Билет </h1>
 <p>
-  <strong>Номер:</strong>
-  <%= @ticket.number %>
+  <strong>Номер </strong>
+  <%= @ticket.id %>
+ <table>
+   <thead>
+      <tr>
+        <td> Фамилия  </td>
+        <td> Имя  </td>
+        <td> Отчество  </td>
+        <td> Номер паспорта  </td>
+        <td> Станция отправления </td>
+        <td> Станция прибытия </td>
+      </tr>
+    </thead>
+    <tbody>  
+     <tr>
+        <td> <%= @ticket.second_name %>  </td>
+        <td> <%= @ticket.first_name %> </td>
+        <td> <%= @ticket.middle_name %>  </td>
+        <td> <%= @ticket.passport_number %>  </td>
+        <td> <%= @ticket.base_station.title %> </td>
+        <td> <%= @ticket.end_station.title %> </td>
+     </tr>
+    </tbody>
+   </table>
 
-<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
+
 <%= link_to 'Назад', tickets_path %>
