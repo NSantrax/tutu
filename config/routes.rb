@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :routes
   resources :users
-  resources :tickets, only: [:create, :show, :new, :delete]
+  resources :tickets, only: [:create, :show, :new, :destroy, :index]
   resources :sv_wagons,   controller: "wagons", type: "SvWagons"
   resources :coupe_wagons,   controller: "wagons", type: "CoupeWagons"
   resources :plackart_wagons,   controller: "wagons", type: "PlackartWagons"
