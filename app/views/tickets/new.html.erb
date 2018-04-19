@@ -1,6 +1,7 @@
 <h1>Добавить билет</h1>
 
-<%= form_for(@ticket) do |f| %>
+<%= @train%>
+<%= form_with(model: @ticket, local: true) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
@@ -11,16 +12,38 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+   <% end %>
+<p>
 
+
+
+Укажите свои данные:
   <div class="field">
-    <%= f.label :number %>
-    <%= f.text_field :number, id: :ticket_number %>
-  </div>
+    <%= f.label "Фамилия" %>
+    <%= f.text_field :second_name, id: :ticket_second_name %>
+    <%= f.label "Имя" %>
+    <%= f.text_field :first_name, id: :ticket_first_name %>
+    <%= f.label "Отчество" %>
+    <%= f.text_field :middle_name, id: :ticket_middle_name %>
+    <%= f.label "Номер паспорта" %>
+    <%= f.number_field :passport_number, id: :ticket_passport_number %>
+    
+   <%= f.hidden_field :train_id, value: params[:train_id] %>
+   <%= f.hidden_field :base_station_id, value: params[:base_station_id] %>
+   <%= f.hidden_field :end_station_id, value: params[:end_station_id] %>
+   <%= f.hidden_field :user_id, value: params[:user_id] %>
 
+  </div>
+</p>
+
+  
   <div class="actions">
     <%= f.submit 'Создать' %>
   </div>
 <% end %>
 
+   
+<p>
+<%= link_to 'Назад к поиску', search_path %>
 <%= link_to 'Назад', tickets_path %>
+</p>

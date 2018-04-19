@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320185726) do
+ActiveRecord::Schema.define(version: 20180401071600) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180320185726) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "station_number"
+    t.time "arrival_time", default: "2000-01-01 00:00:00"
+    t.time "departure_time", default: "2000-01-01 00:00:00"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -38,6 +40,10 @@ ActiveRecord::Schema.define(version: 20180320185726) do
     t.integer "base_station_id"
     t.integer "end_station_id"
     t.integer "train_id"
+    t.integer "passport_number"
+    t.string "first_name"
+    t.string "second_name"
+    t.string "middle_name"
     t.index ["base_station_id"], name: "index_tickets_on_base_station_id"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
@@ -64,15 +70,15 @@ ActiveRecord::Schema.define(version: 20180320185726) do
   create_table "wagons", force: :cascade do |t|
     t.integer "number"
     t.string "type"
-    t.integer "low_place"
-    t.integer "top_place"
-    t.integer "side_low_place"
-    t.integer "side_top_place"
-    t.integer "sit_place"
+    t.integer "low_place", default: 0
+    t.integer "top_place", default: 0
+    t.integer "side_low_place", default: 0
+    t.integer "side_top_place", default: 0
+    t.integer "sit_place", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"
-    t.integer "number_on_train"
+    t.integer "number_on_train", default: 0
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 

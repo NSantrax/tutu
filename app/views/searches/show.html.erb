@@ -1,0 +1,66 @@
+<h1>Поиск билета</h1>
+
+<p>
+  <%= form_tag search_path, method: :post do %>
+  <div f.field >
+    
+    <%= label_tag :base_station, 'Выбрать станцию отправления' %>
+    <%= select_tag :base_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %>  
+    <%= label_tag :end_station, 'Выбрать станцию назначения' %>
+    <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
+ </div>
+
+  <div f.actions >  
+    <%= submit_tag "Найти" %>  
+ </div>
+  <% end %>
+  
+<p>
+ Результат поиска:
+  <% if @routes.present? %>
+
+   <table>
+     <thead>
+      <tr>
+        
+        <td>Время отправления от станции
+ <p>
+        <%= @base_station.title %>
+        </td>
+        <td>Время прибытия на станцию
+<p>
+        <%= @end_station.title %>
+        </td>
+        <td>Номер поезда</td>
+        <td>  </td>     
+      </tr>
+    </thead> 
+    <tbody>  
+      <tr>
+       <% @routes.each do |route| %>
+         <% if RailwayStation.find(@base_station.id).station_number_in(route) < RailwayStation.find(@end_station.id).station_number_in(route) && route.trains.present? %>   
+          <% route.trains.each do |train| %>
+   
+       
+       <td><%= RailwayStation.find(@base_station.id).departure_time_in(route) %></td>
+       <td><%= RailwayStation.find(@end_station.id).arrival_time_in(route) %></td> 
+       <td><%= train.number %></tSd>
+       <td>
+       <%= form_tag new_ticket_path, method: :get do %>
+         <%= hidden_field_tag :train_id, train.id %>
+         <%= hidden_field_tag :base_station_id, @base_station.id %>
+         <%= hidden_field_tag :end_station_id, @end_station.id %>
+         <%= hidden_field_tag :user_id, @user.id %>
+         <%= submit_tag 'Купить билет' %>
+       <% end %>
+       </td>      
+    </tr> 
+     <% end %> 
+    <% end %>
+  <% end %> 
+
+     </tbody>
+   </table>
+    <% else %>
+   Маршрут отсутствует
+<% end %>
