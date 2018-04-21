@@ -10,6 +10,7 @@
         <td> Имя  </td>
         <td> Отчество  </td>
         <td> Номер паспорта  </td>
+        <td> Email  </td>
         <td> Станция отправления </td>
         <td> Станция прибытия </td>
       </tr>
@@ -20,6 +21,7 @@
         <td> <%= @ticket.first_name %> </td>
         <td> <%= @ticket.middle_name %>  </td>
         <td> <%= @ticket.passport_number %>  </td>
+        <td> <%= @ticket.user.email %>  </td>
         <td> <%= @ticket.base_station.title %> </td>
         <td> <%= @ticket.end_station.title %> </td>
      </tr>
