@@ -1,0 +1,20 @@
+<%= form_with(model: [:admin, ticket], local: true) do |form| %>
+  <%= render 'common/errors', resourse: @ticket %>
+
+  <div class="field">
+    <%= form.label :second_name %>
+    <%= form.text_field  :second_name, id: :ticket_second_name %>
+    <%= form.label :first_name %>
+    <%= form.text_field  :first_name, id: :ticket_first_name %>
+    <%= form.label :middle_name %>
+    <%= form.text_field  :middle_name, id: :ticket_middle_name %>
+    <%= form.label :passport_number %>
+    <%= form.text_field  :passport_number, id: :ticket_passport_number %>
+  </div>
+
+   
+
+  <div class="actions">
+    <%= form.submit  'Изменить'  %>
+  </div>
+<% end %>
