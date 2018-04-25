@@ -1,7 +1,7 @@
 <h1>Добавить билет</h1>
 
 <%= @train%>
-<%= form_with(model: @ticket, local: true) do |f| %>
+<%= form_with(model: [:admin, @ticket], local: true) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
@@ -13,10 +13,9 @@
       </ul>
     </div>
    <% end %>
+
+
 <p>
-
-
-
 Укажите свои данные:
   <div class="field">
     <%= f.label "Фамилия" %>
@@ -27,11 +26,13 @@
     <%= f.text_field :middle_name, id: :ticket_middle_name %>
     <%= f.label "Номер паспорта" %>
     <%= f.number_field :passport_number, id: :ticket_passport_number %>
+    <%= f.label :user, 'Выбрать пользователя' %>
+    <%= f.collection_select :user_id, User.all, :id, :email %>
     
    <%= f.hidden_field :train_id, value: params[:train_id] %>
    <%= f.hidden_field :base_station_id, value: params[:base_station_id] %>
    <%= f.hidden_field :end_station_id, value: params[:end_station_id] %>
-   <%= f.hidden_field :user_id, value: params[:user_id] %>
+   
 
   </div>
 </p>

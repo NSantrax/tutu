@@ -22,7 +22,10 @@ class SearchesController < ApplicationController
   end
 
   def set_user
-    @user = User.first
+   if user_signed_in?
+     @user ||= current_user
+   else
+     @user = User.first
+   end
   end
-
 end
