@@ -8,13 +8,15 @@
     <%= select_tag :base_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %>  
     <%= label_tag :end_station, 'Выбрать станцию назначения' %>
     <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
+    
  </div>
 
   <div f.actions >  
-    <%= submit_tag "Найти" %>  
+    <%= submit_tag "Найти" %> 
  </div>
-  <% end %>
-  
+  <% end %> 
+
+ 
 <p>
  Результат поиска:
   <% if @routes.present? %>
@@ -46,7 +48,10 @@
        <td><%= RailwayStation.find(@end_station.id).arrival_time_in(route) %></td> 
        <td><%= train.number %></tSd>
        <td>
-       <%= form_tag new_ticket_path, method: :get do %>
+ 
+       
+       
+       <%= form_tag (current_user.admin? ? new_admin_ticket_path : new_ticket_path), method: :get do %>
          <%= hidden_field_tag :train_id, train.id %>
          <%= hidden_field_tag :base_station_id, @base_station.id %>
          <%= hidden_field_tag :end_station_id, @end_station.id %>

@@ -1,0 +1,29 @@
+<%= form_with(model: [:admin, @ticket], local: true) do |form| %>
+  <%= render 'common/errors', resourse: @ticket %>
+
+  <div class="field">
+    <%= form.label :second_name, "Фамилия" %>
+    <%= form.text_field  :second_name, id: :ticket_second_name %>
+    <%= form.label :first_name, "Имя" %>
+    <%= form.text_field  :first_name, id: :ticket_first_name %>
+    <%= form.label :middle_name, "Отчество" %>
+    <%= form.text_field  :middle_name, id: :ticket_middle_name %>
+    <%= form.label :passport_number, "Номер паспорта" %>
+    <%= form.text_field  :passport_number, id: :ticket_passport_number %>
+    
+    <%= form.label :user, 'Выбрать пользователя' %>
+    <%= form.collection_select :user_id, User.all, :id, :email %>
+    <%= form.label :base_station, 'Выбрать станцию отправления' %>
+    <%= form.collection_select :base_station_id, RailwayStation.all, :id, :title %>
+    <%= form.label :end_station, 'Выбрать станцию назначения' %>
+    <%= form.collection_select :end_station_id, RailwayStation.all, :id, :title %>
+    <%= form.label :train, 'Выбрать поезд' %>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+   
+
+  <div class="actions">
+    <%= form.submit  'Изменить'  %>
+  </div>
+<% end %>

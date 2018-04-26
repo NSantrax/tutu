@@ -1,0 +1,35 @@
+<p id="notice", bgcolor = 'red'><%= notice %></p>
+<h1> Билет </h1>
+<p>
+  <strong>Номер </strong>
+  <%= @ticket.id %>
+ <table>
+   <thead>
+      <tr>
+        <td> Фамилия  </td>
+        <td> Имя  </td>
+        <td> Отчество  </td>
+        <td> Номер паспорта  </td>
+        <td> Email  </td>
+        <td> Станция отправления </td>
+        <td> Станция прибытия </td>
+      </tr>
+    </thead>
+    <tbody>  
+     <tr>
+        <td> <%= @ticket.second_name %>  </td>
+        <td> <%= @ticket.first_name %> </td>
+        <td> <%= @ticket.middle_name %>  </td>
+        <td> <%= @ticket.passport_number %>  </td>
+        <td> <%= @ticket.user.email %>  </td>
+        <td> <%= @ticket.base_station.title %> </td>
+        <td> <%= @ticket.end_station.title %> </td>
+     </tr>
+    </tbody>
+   </table>
+<p>
+<%= link_to 'Редактировать', edit_admin_ticket_path %>
+</p>
+<p>
+<%= link_to 'Назад', admin_tickets_path %>
+</p>

@@ -13,7 +13,7 @@
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><%= ticket.number %></td>
+        <td><%= ticket.id %></td>
         <td><%= link_to 'Показать', ticket %></td>
  
         <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
