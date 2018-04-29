@@ -6,19 +6,19 @@
 </p>
 
 <p>
-  <strong>Поезда на маршруте:</strong>
+  <strong><%= t('admin.routes.trains') %></strong>
   <% if @route.trains.present? %>
     <% @route.trains.each do |train| %>
       <%= train.number %>
     <% end %>
   <% else %>
-    Поездов на маршруте нет
+  <%= t('admin.routes.trains_absents') %>
   <% end %>
 </p>
 <p>
-  <strong>Станции маршрута: </strong>
+  <strong><%= t('admin.routes.stations') %> </strong>
   <% if @route.railway_stations.empty? %>
-    В маршруте нет станций
+    <%= t('admin.routes.stations_absents') %>
      <% else %>
      <table>
       <thead>

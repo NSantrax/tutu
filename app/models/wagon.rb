@@ -2,14 +2,16 @@ class Wagon < ActiveRecord::Base
    
         TYPE_WAGON = %w[CoupeWagon PlackartWagon SvWagon SitWagon]
         PLACE = [:low_place, :top_place, :side_low_place, :side_top_place, :sit_place]
- 
+
+        before_validation :set_number
+
 	validates :number, presence: true
         validates :number, uniqueness: true
         validates :type, inclusion: { in: TYPE_WAGON, message: "%{type} is not a valid type" }
         validates :low_place, :side_low_place,:side_top_place,:sit_place, :top_place, presence: true
         validates :number_on_train, uniqueness: { scope: :train_id }, allow_blank: true
         belongs_to  :train, optional: true
-        before_validation :set_number
+       
        
 
         

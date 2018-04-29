@@ -1,2 +1,50 @@
 ru:
-  hello: 'Привет'
+  common:
+    show: 'Показать'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+    confirm: 'Вы уверены?'
+    back: 'Назад'
+    errors: 'При заполнении данных возникли ошибки:'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      edit:
+        title: 'Редактировать станцию'
+      list: 'Список станций'
+    routes:
+      new:
+        title: 'Новый маршрут'
+      edit:
+        title: 'Редактировать маршрут'
+      list: 'Список маршрутов'
+      trains: 'Поезда на маршруте:'
+      trains_absents: 'Поездов на маршруте нет'
+      stations: 'Станции маршрута:'
+      stations_absents: 'Станции в маршруте отсутствуют'
+    trains:
+      number: 'Номер поезда'
+      current_station: 'На станции'
+      wagons: 'Вагонов в поезде'
+      head: 'Нумерация вагонов с головы поезда'
+      tail: 'Нумерация вагонов с хвоста поезда'
+      route: 'На маршруте'
+      route_absents: 'Маршрут не задан'
+      new:
+        title: 'Новый поезд'
+      edit:
+        title: 'Редактировать поезд'
+      list: 'Список поездов'
+    tickets:
+      index:
+        number: 'Номер'
+      new:
+        title: 'Новый билет'
+      edit:
+        title: 'Редактировать билет'
+      list: 'Список поездов'
+  helpers:
+    submit:
+      create: 'Создать'
+      update: 'Изменить'

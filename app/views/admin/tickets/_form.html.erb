@@ -2,28 +2,28 @@
   <%= render 'common/errors', resourse: @ticket %>
 
   <div class="field">
-    <%= form.label :second_name, "Фамилия" %>
+    <%= form.label :second_name %>
     <%= form.text_field  :second_name, id: :ticket_second_name %>
-    <%= form.label :first_name, "Имя" %>
+    <%= form.label :first_name %>
     <%= form.text_field  :first_name, id: :ticket_first_name %>
-    <%= form.label :middle_name, "Отчество" %>
+    <%= form.label :middle_name %>
     <%= form.text_field  :middle_name, id: :ticket_middle_name %>
-    <%= form.label :passport_number, "Номер паспорта" %>
+    <%= form.label :passport_number %>
     <%= form.text_field  :passport_number, id: :ticket_passport_number %>
     
-    <%= form.label :user, 'Выбрать пользователя' %>
+    <%= form.label :user %>
     <%= form.collection_select :user_id, User.all, :id, :email %>
-    <%= form.label :base_station, 'Выбрать станцию отправления' %>
+    <%= form.label :base_station %>
     <%= form.collection_select :base_station_id, RailwayStation.all, :id, :title %>
-    <%= form.label :end_station, 'Выбрать станцию назначения' %>
+    <%= form.label :end_station %>
     <%= form.collection_select :end_station_id, RailwayStation.all, :id, :title %>
-    <%= form.label :train, 'Выбрать поезд' %>
+    <%= form.label :train %>
     <%= form.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
    
 
   <div class="actions">
-    <%= form.submit  'Изменить'  %>
+    <%= form.submit  %>
   </div>
 <% end %>
