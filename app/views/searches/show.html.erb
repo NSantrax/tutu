@@ -50,6 +50,7 @@
        <td>
  
        
+       <% if user_signed_in?  %>
        
        <%= form_tag (current_user.admin? ? new_admin_ticket_path : new_ticket_path), method: :get do %>
          <%= hidden_field_tag :train_id, train.id %>
@@ -58,6 +59,9 @@
          <%= hidden_field_tag :user_id, @user.id %>
          <%= submit_tag 'Купить билет' %>
        <% end %>
+        <% else%>
+           <h2>Купить билет может только залогиненный пользователь. Войдите или зарегистрируйтесь.</h2>
+           <% end %>
        </td>      
     </tr> 
      <% end %> 
