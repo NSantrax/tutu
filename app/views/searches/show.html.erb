@@ -1,39 +1,44 @@
 <h1>Поиск билета</h1>
 
-<p>
+<div class="shadow container-fluid bg-info text-warning" >
+ 
   <%= form_tag search_path, method: :post do %>
-  <div f.field >
-    
+  <div class= "row" %>
+    <div class= "col-md-5" %>
     <%= label_tag :base_station, 'Выбрать станцию отправления' %>
-    <%= select_tag :base_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %>  
+    <%= select_tag :base_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %>
+     </div>
+    <div class= "col-md-5" %>
     <%= label_tag :end_station, 'Выбрать станцию назначения' %>
     <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
-    
- </div>
+     </div>
 
-  <div f.actions >  
-    <%= submit_tag "Найти" %> 
- </div>
+  <div class= "col-md-2 text-right" %>
+    <%= submit_tag "Найти" %>
+  </div>
+
   <% end %> 
-
+ </div><!--/row/-->
+</div><!--/container/-->
  
 <p>
- Результат поиска:
+ <h3>Результат поиска:</h3>
+ 
   <% if @routes.present? %>
-
-   <table>
+ 
+   <table class="table table-striped  text-light" style="background-color:#008080">
      <thead>
       <tr>
         
-        <td>Время отправления от станции
+        <td width="400">    Время отправления от станции  
  <p>
         <%= @base_station.title %>
         </td>
-        <td>Время прибытия на станцию
+        <td width="400">     Время прибытия на станцию  
 <p>
         <%= @end_station.title %>
         </td>
-        <td>Номер поезда</td>
+        <td width="250">  Номер поезда     </td>
         <td>  </td>     
       </tr>
     </thead> 
@@ -60,16 +65,21 @@
          <%= submit_tag 'Купить билет' %>
        <% end %>
         <% else%>
-           <h2>Купить билет может только залогиненный пользователь. Войдите или зарегистрируйтесь.</h2>
+           <h6>Чтобы купить билет войдите или зарегистрируйтесь.</h6>
            <% end %>
        </td>      
-    </tr> 
+    </tr>
+   </div>
      <% end %> 
     <% end %>
+   
   <% end %> 
 
      </tbody>
    </table>
+  
     <% else %>
+  <div class="shadow container-right col-md-4 bg-danger text-light" >  
    Маршрут отсутствует
+   </div>
 <% end %>
