@@ -13,7 +13,7 @@
     <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
      </div>
 
-  <div class= "col-md-2 text-right" %>
+  <div class= "col-md-2 text-right btn btn-primary" %>
     <%= submit_tag "Найти" %>
   </div>
 
@@ -26,7 +26,7 @@
  
   <% if @routes.present? %>
  
-   <table class="table table-striped  text-light" style="background-color:#008080">
+   <table class="table table-striped  text-light bg-info" >
      <thead>
       <tr>
         

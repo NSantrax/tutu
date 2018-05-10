@@ -31,12 +31,10 @@ class Wagon < ActiveRecord::Base
    end
 
    def set_number
-     def set_number
-    if self.number_on_train.zero? 
-     self.number_on_train = train.wagons.maximum('number_on_train').to_i + 1
+     if self.number_on_train.zero? 
+       self.number_on_train = train.wagons.maximum('number_on_train').to_i + 1
      end
    end
-    end
 
         
 end  

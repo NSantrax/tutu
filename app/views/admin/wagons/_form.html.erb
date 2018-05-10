@@ -29,8 +29,9 @@
     <%= form.label :train, 'Выбрать поезд' %>
     <%= form.collection_select :train_id, Train.all, :id, :number %>
   </div>
-
-  <div class="actions">
+  
+  <div class="actions btn btn-primary">
     <%= form.submit "#{ @wagon.new_record? ? 'Создать' : 'Изменить' }" %>
   </div>
+ <p> </p>
 <% end %>
