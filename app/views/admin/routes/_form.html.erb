@@ -13,6 +13,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "#{ @route.new_record? ? 'Создать' : 'Изменить' }" %>
+     <button class="btn btn-info border border-light" type="submit"><%="#{ @route.new_record? ? 'Создать' : 'Изменить' }" %></button>
   </div>
 <% end %>

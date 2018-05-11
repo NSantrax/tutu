@@ -5,12 +5,8 @@
     <%= form.label :title %>
     <%= form.text_field :title, id: :railway_station_title %>
   </div>
-
-  
-
-
-
+<p></p>
   <div class="actions">
-    <%= form.submit "#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }" %>
+    <button class="btn btn-info border border-light" type="submit"><%="#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }" %></button>
   </div>
 <% end %>

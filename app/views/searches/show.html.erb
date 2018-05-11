@@ -13,8 +13,8 @@
     <%= select_tag :end_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title, {})  %> 
      </div>
 
-  <div class= "col-md-2 text-right btn btn-primary" %>
-    <%= submit_tag "Найти" %>
+  <div class= "col-md-2 text-right" %>
+    <button class="btn btn-primary btn-lg border border-light" type="submit">Найти</button>
   </div>
 
   <% end %> 
@@ -62,7 +62,7 @@
          <%= hidden_field_tag :base_station_id, @base_station.id %>
          <%= hidden_field_tag :end_station_id, @end_station.id %>
          <%= hidden_field_tag :user_id, @user.id %>
-         <%= submit_tag 'Купить билет' %>
+          <button class="btn btn-warning border border-light" type="submit">Купить билет</button>
        <% end %>
         <% else%>
            <h6>Чтобы купить билет войдите или зарегистрируйтесь.</h6>
