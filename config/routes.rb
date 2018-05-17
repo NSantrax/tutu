@@ -15,7 +15,8 @@ Rails.application.routes.draw do
       patch :update_departure_time, on: :member    
     end
     resources :routes
-    resources :users  
+    resources :users
+    resources :wagons 
     resources :sv_wagons,   controller: "wagons", type: "SvWagons"
     resources :coupe_wagons,   controller: "wagons", type: "CoupeWagons"
     resources :plackart_wagons,   controller: "wagons", type: "PlackartWagons"
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  root 'welcome#index'
+  root 'searches#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

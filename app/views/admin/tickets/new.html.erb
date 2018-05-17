@@ -1,4 +1,4 @@
-<h1>Добавить билет</h1>
+<h1><%= t('.title')%></h1>
 
 <%= @train%>
 <%= form_with(model: [:admin, @ticket], local: true) do |f| %>
@@ -18,15 +18,15 @@
 <p>
 Укажите свои данные:
   <div class="field">
-    <%= f.label "Фамилия" %>
+    <%= f.label :second_name %>
     <%= f.text_field :second_name, id: :ticket_second_name %>
-    <%= f.label "Имя" %>
+    <%= f.label :first_name %>
     <%= f.text_field :first_name, id: :ticket_first_name %>
-    <%= f.label "Отчество" %>
+    <%= f.label :middle_name %>
     <%= f.text_field :middle_name, id: :ticket_middle_name %>
-    <%= f.label "Номер паспорта" %>
+    <%= f.label :passport_number %>
     <%= f.number_field :passport_number, id: :ticket_passport_number %>
-    <%= f.label :user, 'Выбрать пользователя' %>
+    <%= f.label :user %>
     <%= f.collection_select :user_id, User.all, :id, :email %>
     
    <%= f.hidden_field :train_id, value: params[:train_id] %>
@@ -39,12 +39,12 @@
 
   
   <div class="actions">
-    <%= f.submit 'Создать' %>
+     <button class="btn btn-info border border-light" type="submit">Создать</button>
   </div>
 <% end %>
 
    
 <p>
 <%= link_to 'Назад к поиску', search_path %>
-<%= link_to 'Назад', tickets_path %>
+<%= link_to t('common.back'), tickets_path %>
 </p>

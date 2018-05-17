@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Номер:</strong>
+  <strong><%= t('admin.trains.number') %></strong>
   <%= @train.number %>
 </p>
-  <strong>На станции</strong>
+  <strong><%= t('admin.trains.current_station') %></strong>
   <% if @train.current_station.present? %>
     <%= @train.current_station.title %> 
   <% else %>
@@ -12,7 +12,7 @@
   <% end %>
 
  <p>
-  <strong>Вагонов в поезде: </strong>
+  <strong><%= t('admin.trains.wagons') %> </strong>
   <% if @train.wagons.any? %>
     <%=  @train.wagons.count %>
     <% else %>
@@ -21,14 +21,13 @@
   </p>
 
 <p>
- Нумерация вагонов 
-  <%= @train.sort_wagons ? "С головы поезда" : "С хвоста поезда" %>
+  <%= @train.sort_wagons ? t('admin.trains.head') : t('admin.trains.tail') %>
 </p>
   
    <% @train.wagons.ordered(@train).each do |wagon| %>
      <%= link_to "Вагон № #{wagon.number}", [:admin, wagon] %> |
    <% end %>
- </p>
+ </p
  <p>
    <%= link_to 'Добавить вагон', new_admin_train_wagon_path(@train) %>
  </p>
@@ -49,13 +48,13 @@
 </p>
 
 <p>
-  <strong>На маршруте</strong>
+  <strong><%= t('admin.trains.route') %></strong>
   <% if @train.route.present? %>
     <%= @train.route.name %>
   <% else %>
-   Маршрут не назначен
+   <%= t('admin.trains.route_absents')%>
   <% end %>
  
 </p>
-<%= link_to 'Редактировать', edit_admin_train_path(@train) %>
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('common.edit'), edit_admin_train_path(@train) %>
+<%= link_to t('common.back'), admin_trains_path %>

@@ -1,16 +1,12 @@
-<%= form_with(model: [ :admin, railway_station], local: true) do |form| %>
+<%= form_with(model: [ :admin, @railway_station], local: true) do |form| %>
   <%= render 'common/errors', resourse: @railway_station %>
 
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :railway_station_title %>
   </div>
-
-  
-
-
-
+<p></p>
   <div class="actions">
-    <%= form.submit "#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }" %>
+     <%= form.submit t("#{railway_station.new_record? ? :create : :update}"), :class => 'btn btn-info  border border-light' %> 
   </div>
 <% end %>
