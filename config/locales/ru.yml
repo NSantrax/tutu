@@ -1,4 +1,6 @@
 ru:
+  create: 'Создать'
+  update: 'Изменить'
   common:
     show: 'Показать'
     edit: 'Редактировать'

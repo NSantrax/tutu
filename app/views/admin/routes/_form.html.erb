@@ -13,6 +13,6 @@
   </div>
 
   <div class="actions">
-     <button class="btn btn-info border border-light" type="submit"><%="#{ @route.new_record? ? 'Создать' : 'Изменить' }" %></button>
+    <%= form.submit t("#{route.new_record? ? :create : :update}"), :class => 'btn btn-warning btn-outline-primary border border-light'%>
   </div>
 <% end %>

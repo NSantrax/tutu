@@ -29,9 +29,10 @@
     <%= form.label :train, 'Выбрать поезд' %>
     <%= form.collection_select :train_id, Train.all, :id, :number %>
   </div>
-  
+ <p> 
   <div class="actions">
-   <button class="btn btn-info border border-light" type="submit"> <%="#{ @wagon.new_record? ? 'Создать' : 'Изменить' }"%></button>
+   <%= form.submit t("#{wagon.new_record? ? :create : :update}"), :class => 'btn btn-info border border-light'%>
   </div>
+  </p>
  <p> </p>
 <% end %>

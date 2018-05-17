@@ -7,6 +7,6 @@
   </div>
 <p></p>
   <div class="actions">
-    <button class="btn btn-info border border-light" type="submit"><%="#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }" %></button>
+     <%= form.submit t("#{railway_station.new_record? ? :create : :update}"), :class => 'btn btn-info  border border-light' %> 
   </div>
 <% end %>
