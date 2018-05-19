@@ -46,7 +46,4 @@ ru:
       edit:
         title: 'Редактировать билет'
       list: 'Список поездов'
-  helpers:
-    submit:
-      create: 'Создать'
-      update: 'Изменить'
+ 
