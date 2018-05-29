@@ -1,4 +1,7 @@
 ru:
+  bay_ticket: 'Вы купили билет'
+  del_ticket: 'Вы отменили покупку билета'
+  edit_ticket: 'Вы изменили билет'
   create: 'Создать'
   update: 'Изменить'
   common:
