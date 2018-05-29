@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180519140105) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-   
+    t.index [nil], name: "index_routes_on_train_id"
   end
 
   create_table "tickets", force: :cascade do |t|
