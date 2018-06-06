@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519140105) do
+ActiveRecord::Schema.define(version: 20180519093436) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -19,18 +22,17 @@ ActiveRecord::Schema.define(version: 20180519140105) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.bigint "railway_station_id"
-    t.bigint "route_id"
+    t.integer "railway_station_id"
+    t.integer "route_id"
     t.integer "station_number"
-    t.time "arrival_time", default: "2000-01-01 00:00:00"
-    t.time "departure_time", default: "2000-01-01 00:00:00"
+    t.time "arrival_time"
+    t.time "departure_time"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil], name: "index_routes_on_train_id"
   end
 
   create_table "tickets", force: :cascade do |t|
