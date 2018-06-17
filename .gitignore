@@ -25,3 +25,4 @@
 # rvm
 .ruby-version
 .ruby-gemset
+sendgrid.env

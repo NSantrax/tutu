@@ -4,8 +4,10 @@ class RailwayStation < ApplicationRecord
 	has_many :trains
         has_many :railway_stations_routes
         has_many :routes, through: :railway_stations_routes
-
-  scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.station_number").uniq }
+  
+  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.station_number').joins(:railway_stations_routes).order("railway_stations_routes.station_number").uniq }
+  
+  #scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.station_number").uniq }
 
 def update_station_number(route, station_number)
   station_route = railway_stations_routes.where(route: route).first

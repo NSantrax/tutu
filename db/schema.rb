@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424053137) do
+ActiveRecord::Schema.define(version: 20180519093436) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20180424053137) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "station_number"
-    t.time "arrival_time", default: "2000-01-01 00:00:00"
-    t.time "departure_time", default: "2000-01-01 00:00:00"
+    t.time "arrival_time"
+    t.time "departure_time"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -36,10 +39,10 @@ ActiveRecord::Schema.define(version: 20180424053137) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "base_station_id"
-    t.integer "end_station_id"
-    t.integer "train_id"
+    t.bigint "user_id"
+    t.bigint "base_station_id"
+    t.bigint "end_station_id"
+    t.bigint "train_id"
     t.integer "passport_number"
     t.string "first_name"
     t.string "second_name"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20180424053137) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
-    t.integer "current_station_id"
+    t.bigint "route_id"
+    t.bigint "current_station_id"
     t.boolean "sort_wagons", default: true
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
@@ -90,8 +93,9 @@ ActiveRecord::Schema.define(version: 20180424053137) do
     t.integer "sit_place", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "train_id"
+    t.bigint "train_id"
     t.integer "number_on_train", default: 0
+    t.index ["id", "type"], name: "index_wagons_on_id_and_type"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 
