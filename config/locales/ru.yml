@@ -13,10 +13,12 @@ ru:
     errors: 'При заполнении данных возникли ошибки:'
   admin:
     railway_stations:
+      
       new:
         title: 'Новая станция'
       edit:
         title: 'Редактировать станцию'
+        
       list: 'Список станций'
     routes:
       new:
@@ -49,4 +51,7 @@ ru:
       edit:
         title: 'Редактировать билет'
       list: 'Список поездов'
- 
+  helpers:
+   submit:
+     create: 'Создать'
+     update: 'Изменить'
