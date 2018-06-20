@@ -1,5 +1,5 @@
-<%= form_with(model: [:admin, train], local: true) do |form| %>
-  <%= render 'common/errors', resourse: @train %>
+<%= form_for [:admin, train], html: { style: "display: #{ hidden ? 'none' : 'block'}"}  do |form| %>
+  <%= render 'common/errors', resourse: train %>
 
   <div class="field">
     <%= form.label :number %>
@@ -28,7 +28,7 @@
 </p>
 <p>
   <div class="actions">
-    <%= form.submit t("#{train.new_record? ? :create : :update}"), :class => 'btn btn-warning btn-outline-primary border border-light' %>
+    <%= form.submit %>
   </div>
 </p>
 <% end %>

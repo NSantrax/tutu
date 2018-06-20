@@ -11,7 +11,19 @@
   </thead>
 
   <tbody>
-     <%= render @trains %> 
+    <% @trains.each do |train| %> 
+      <tr>
+        <td><%= train.number %>
+           <div {id="train_number_<%= train.id %>"}>
+             <%= render 'form', train: train, hidden: true %>
+           </div>
+        </td>
+            <td><%= link_to t('common.show'), [:admin, train] %></td>
+            <td><%= link_to t('common.edit'), '', class: 'edit_train', data: { train_id: train.id }%></td>
+            <td><%= link_to t('common.delete'), [:admin, train], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        
+      </tr>
+     <% end %>
   </tbody>
 </table>
 
