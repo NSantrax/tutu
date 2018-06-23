@@ -8,7 +8,7 @@ $(document).ready(function() {
        train_id = $(this).data('trainId');
        form = $('#edit_train_' + train_id);
        number = $('#train_number_' + train_id);
-
+       console.log(train_id);
 
        if (!$(this).hasClass('cancel')) {
            $(this).addClass('cancel');

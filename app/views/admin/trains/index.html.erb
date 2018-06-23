@@ -13,7 +13,7 @@
   <tbody>
     <% @trains.each do |train| %> 
       <tr>
-        <td><%= train.number %>
+        <td><%= train.number  %>
            <div {id="train_number_<%= train.id %>"}>
              <%= render 'form', train: train, hidden: true %>
            </div>

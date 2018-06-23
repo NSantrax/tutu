@@ -1,4 +1,4 @@
-  <%= form_with(model: [:admin, @train, wagon.becomes(Wagon)], local: true) do |form| %>
+  <%= form_for [:admin, @train, wagon.becomes(Wagon)] do |form| %>
   <%= render 'common/errors', resourse: wagon %>
    
 
@@ -7,21 +7,21 @@
     <%= form.text_field  :number, id: :wagon_number %>
   </div>
 
-<div class="field">
-  <%= form.label :type %>
-  <% Wagon::TYPE_WAGON.each do |type| %>   
-   <%= form.radio_button(:type, type) %>
-   <% type_n = 'type_' + type.downcase.sub('Wagon', '').to_s + '_wagon' %>
-   <%= label_tag(type_n.to_sym, type) %>
-  <% end %>
+<p>
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.select :type, Wagon::TYPE_WAGON, id: 'wagon_type' %>
   </div>
+ </p>
+
+
 
 
   <% Wagon::PLACE.each do |place| %>  
-  <div class="field">
+  <div class = 'field' >
     <%= form.label place %>
     <% place_n = 'wagon_' + place.to_s %>
-    <%= form.text_field  place, id: place_n.to_sym %>
+    <%= form.number_field  place, id: place_n.to_sym, class: 'place' %>
   <% end %>    
   </div>
 
