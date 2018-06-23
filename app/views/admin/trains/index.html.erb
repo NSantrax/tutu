@@ -23,14 +23,11 @@
             <td><%= link_to t('common.show'), [:admin, train] %></td>
             <td><%= link_to t('common.edit'), '', class: 'edit_train', data: { train_id: train.id }%></td>
             <td><%= link_to t('common.delete'), [:admin, train], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-        
-      </tr>
-     <% end %>
+     </tr>
+    <% end %>
   </tbody>
 </table>
 
 <br>
 
 <%= link_to 'Создать поезд', new_admin_train_path %>
-
-
