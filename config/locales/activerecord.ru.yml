@@ -5,6 +5,8 @@ ru:
       train: 'Поезд'
       tisket: 'Билет'
     attributes:
+      create: 'Создать'
+      update: 'Изменить'
       railway_station:
         title: 'Название'
       train:
